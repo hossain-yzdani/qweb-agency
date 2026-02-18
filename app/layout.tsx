@@ -1,16 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import Header from "@/components/navabr";
+import Footer from "@/components/footer";
+import localFont from "next/font/local"
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const myFont = localFont({
+  src: [
+    {
+      path: "../public/fonts/KalamehWeb-Light.woff2",
+      weight: "400",
+      style: "light",
+    },
+    {
+      path: "../public/fonts/KalamehWeb-Medium.woff2",
+      weight: "800",
+      style: "light",
+    },
+    {
+      path: "../public/fonts/KalamehWeb-Regular.woff2",
+      weight: "600",
+      style: "light",
+    },
+  ],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,11 +36,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${myFont.className} font-sans antialiased`}
       >
-        {children}
+        <Header />
+        <main className="mt-20 text-black">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

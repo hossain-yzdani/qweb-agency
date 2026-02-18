@@ -3,11 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --themecolor: #3c0366;
+  --themecolor-light: #6e11b0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-themecolor: var(--themecolor);
+  --color-themecolor-light: var(--themecolor-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -20,7 +24,19 @@
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* styles */
+.button-shadow{
+  color: white;
+}
+.button-shadow:hover{
+  box-shadow: 2px 2px 10px lab(30.6017% 56.7637 -64.4751), -2px -2px 10px lab(30.6017% 56.7637 -64.4751);
+}
+.menu {
+  transition: 0.4s ease-in-out;
+}
+
+/* animations */

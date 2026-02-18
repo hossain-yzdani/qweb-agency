@@ -1,0 +1,989 @@
+
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qweb - Digital Marketing &amp; Web Development</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #0a0a12 0%, #12081f 50%, #0d0515 100%);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    
+    /* Animated Background Blobs */
+    .blob-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: float 20s ease-in-out infinite;
+    }
+    
+    .blob-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #7c3aed 0%, #4c1d95 50%, transparent 70%);
+      top: -200px;
+      right: -100px;
+      animation-delay: 0s;
+    }
+    
+    .blob-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #8b5cf6 0%, #5b21b6 50%, transparent 70%);
+      bottom: -150px;
+      left: -100px;
+      animation-delay: -5s;
+    }
+    
+    .blob-3 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #a78bfa 0%, #6d28d9 50%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -10s;
+    }
+    
+    .blob-4 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #7c3aed 0%, #4c1d95 50%, transparent 70%);
+      top: 30%;
+      right: 20%;
+      animation-delay: -15s;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      25% {
+        transform: translate(30px, -30px) scale(1.05);
+      }
+      50% {
+        transform: translate(-20px, 20px) scale(0.95);
+      }
+      75% {
+        transform: translate(-30px, -20px) scale(1.02);
+      }
+    }
+    
+    /* Particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(139, 92, 246, 0.6);
+      border-radius: 50%;
+      animation: particle-float 15s linear infinite;
+    }
+    
+    @keyframes particle-float {
+      0% {
+        transform: translateY(100%) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100%) translateX(100px);
+        opacity: 0;
+      }
+    }
+    
+    /* Glowing Button */
+    .btn-glow {
+      position: relative;
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      border: none;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(124, 58, 237, 0.4);
+    }
+    
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .btn-glow:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 50px rgba(124, 58, 237, 0.6);
+    }
+    
+    .btn-glow:hover::before {
+      left: 100%;
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(139, 92, 246, 0.5);
+      padding: 14px 38px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      border-color: #7c3aed;
+      background: rgba(124, 58, 237, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    /* Service Card */
+    .service-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 24px;
+      padding: 32px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.15) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(139, 92, 246, 0.5);
+      box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+    }
+    
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(91, 33, 182, 0.2) 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      box-shadow: 0 0 30px rgba(124, 58, 237, 0.4);
+    }
+    
+    /* Stats Card */
+    .stats-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .stats-card:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    
+    .stats-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Process Step */
+    .process-step {
+      position: relative;
+      text-align: center;
+      padding: 24px;
+    }
+    
+    .process-number {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin: 0 auto 16px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .process-line {
+      position: absolute;
+      top: 48px;
+      left: 60%;
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, #7c3aed, rgba(124, 58, 237, 0.2));
+    }
+    
+    /* Testimonial Card */
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 24px;
+      padding: 32px;
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      transform: translateY(-4px);
+    }
+    
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Section Fade In Animation */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Text Gradient */
+    .text-gradient {
+      background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Animated Underline */
+    .animated-underline {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .animated-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #7c3aed, #a78bfa);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    
+    .animated-underline:hover::after {
+      width: 100%;
+    }
+    
+    /* Navigation */
+    .nav-link {
+      position: relative;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: #ffffff;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #7c3aed;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Feature Check */
+    .feature-check {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+    
+    /* Counter Animation */
+    .counter {
+      display: inline-block;
+    }
+  </style>
+
+  <!-- <style> @view-transition { navigation: auto; }     </style> -->
+
+  <script src="/_sdk/data_sdk.js" type="text/javascript"> </script>
+
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="relative min-h-full w-full overflow-auto"><!-- Animated Background -->
+   <div class="blob-container">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+   </div><!-- Particles -->
+   <div class="particles" id="particles"></div><!-- Main Content -->
+   <div class="relative z-10"><!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+     <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between"><a href="#" class="flex items-center gap-2">
+        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center">
+         <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+         </svg>
+        </div><span class="text-xl font-bold">Qweb</span> </a>
+       <div class="hidden md:flex items-center gap-8"><a href="#services" class="nav-link">Services</a> <a href="#why" class="nav-link">Why Qweb</a> <a href="#process" class="nav-link">Process</a> <a href="#results" class="nav-link">Results</a> <a href="#contact" class="btn-glow text-sm py-3 px-6">Get Started</a>
+       </div><button class="md:hidden text-white" onclick="toggleMobileMenu()">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6" /> <line x1="3" y1="12" x2="21" y2="12" /> <line x1="3" y1="18" x2="21" y2="18" />
+        </svg></button>
+      </div>
+     </div>
+    </nav><!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl hidden flex-col items-center justify-center gap-8"><a href="#services" class="text-2xl font-semibold" onclick="toggleMobileMenu()">Services</a> <a href="#why" class="text-2xl font-semibold" onclick="toggleMobileMenu()">Why Qweb</a> <a href="#process" class="text-2xl font-semibold" onclick="toggleMobileMenu()">Process</a> <a href="#results" class="text-2xl font-semibold" onclick="toggleMobileMenu()">Results</a> <a href="#contact" class="btn-glow mt-4" onclick="toggleMobileMenu()">Get Started</a> <button class="absolute top-6 right-6" onclick="toggleMobileMenu()">
+      <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18" /> <line x1="6" y1="6" x2="18" y2="18" />
+      </svg></button>
+    </div><!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+     <div class="max-w-5xl mx-auto text-center">
+      <div class="fade-in-section visible" style="animation-delay: 0.1s;"><span class="inline-block px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-sm font-medium mb-8"> ✨ Digital Marketing &amp; Web Development Studio </span>
+      </div>
+      <h1 id="heroHeadline" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 fade-in-section visible" style="animation-delay: 0.2s;">We Build <span class="text-gradient">Fast, Scalable</span> &amp; <span class="text-gradient">Profitable</span> Digital Experiences</h1>
+      <p id="heroSubheadline" class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 fade-in-section visible" style="animation-delay: 0.3s;">Qweb is a premier digital studio specializing in high-performance websites, cutting-edge SEO strategies, and conversion-focused digital marketing that drives real business growth.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-section visible" style="animation-delay: 0.4s;"><button id="ctaPrimary" class="btn-glow">Start Your Project</button> <button id="ctaSecondary" class="btn-outline">View Services</button>
+      </div>
+      <div class="mt-20 scroll-indicator fade-in-section visible" style="animation-delay: 0.5s;">
+       <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="rgba(139, 92, 246, 0.6)" stroke-width="2" class="mx-auto"><path d="M12 5v14M19 12l-7 7-7-7" />
+       </svg>
+      </div>
+     </div>
+    </section><!-- Services Section -->
+    <section id="services" class="py-32 px-6">
+     <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade-in-section"><span class="text-purple-400 font-medium mb-4 block">What We Do</span>
+       <h2 id="servicesTitle" class="text-4xl md:text-5xl font-bold mb-6">Our Services</h2>
+       <p class="text-gray-400 max-w-2xl mx-auto">Comprehensive digital solutions designed to elevate your brand and accelerate growth.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- SEO Card -->
+       <div class="service-card fade-in-section">
+        <div class="service-icon">
+         <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><circle cx="11" cy="11" r="8" /> <path d="M21 21l-4.35-4.35" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">SEO &amp; Search Optimization</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Dominate search rankings with data-driven SEO strategies that bring qualified traffic and increase visibility.</p>
+       </div><!-- Web Development Card -->
+       <div class="service-card fade-in-section">
+        <div class="service-icon">
+         <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><polyline points="16 18 22 12 16 6" /> <polyline points="8 6 2 12 8 18" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Web Development</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Modern, blazing-fast websites built with Next.js and cutting-edge technologies that convert visitors into customers.</p>
+       </div><!-- UI/UX Design Card -->
+       <div class="service-card fade-in-section">
+        <div class="service-icon">
+         <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z" /> <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /> <path d="M2 2l7.586 7.586" /> <circle cx="11" cy="11" r="2" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">UI/UX Design</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Beautiful, intuitive interfaces that delight users and drive engagement through thoughtful design.</p>
+       </div><!-- Performance Card -->
+       <div class="service-card fade-in-section">
+        <div class="service-icon">
+         <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Performance Optimization</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Lightning-fast load times and Core Web Vitals optimization that improve rankings and user experience.</p>
+       </div><!-- Digital Strategy Card -->
+       <div class="service-card fade-in-section">
+        <div class="service-icon">
+         <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /> <polyline points="3.27 6.96 12 12.01 20.73 6.96" /> <line x1="12" y1="22.08" x2="12" y2="12" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Digital Strategy</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Comprehensive digital roadmaps that align your online presence with business objectives for maximum ROI.</p>
+       </div><!-- Growth Marketing Card -->
+       <div class="service-card fade-in-section">
+        <div class="service-icon">
+         <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10" /> <line x1="18" y1="20" x2="18" y2="4" /> <line x1="6" y1="20" x2="6" y2="16" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Growth Marketing</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Data-driven campaigns that scale your business through proven acquisition and retention strategies.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Why Qweb Section -->
+    <section id="why" class="py-32 px-6">
+     <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+       <div class="fade-in-section"><span class="text-purple-400 font-medium mb-4 block">Why Choose Us</span>
+        <h2 id="whyTitle" class="text-4xl md:text-5xl font-bold mb-8">Why Qweb?</h2>
+        <p class="text-gray-400 mb-10 text-lg">We combine technical excellence with strategic thinking to deliver results that matter.</p>
+        <div class="space-y-6">
+         <div class="flex items-start gap-4 group">
+          <div class="feature-check mt-1">
+           <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12" />
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-semibold text-lg mb-1 group-hover:text-purple-300 transition-colors">Performance-First Mindset</h4>
+           <p class="text-gray-400">Every decision optimized for speed, conversions, and user experience.</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-4 group">
+          <div class="feature-check mt-1">
+           <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12" />
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-semibold text-lg mb-1 group-hover:text-purple-300 transition-colors">Modern Tech Stack</h4>
+           <p class="text-gray-400">Built with Next.js, React, and the latest web technologies.</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-4 group">
+          <div class="feature-check mt-1">
+           <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12" />
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-semibold text-lg mb-1 group-hover:text-purple-300 transition-colors">Scalable Solutions</h4>
+           <p class="text-gray-400">Architecture designed to grow with your business needs.</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-4 group">
+          <div class="feature-check mt-1">
+           <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12" />
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-semibold text-lg mb-1 group-hover:text-purple-300 transition-colors">Data-Driven Decisions</h4>
+           <p class="text-gray-400">Analytics and insights that guide strategic improvements.</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="relative fade-in-section">
+        <div class="aspect-square relative"><!-- Abstract Visual -->
+         <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-80 h-80 relative">
+           <div class="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-purple-900/20 rounded-3xl rotate-6 animate-pulse"></div>
+           <div class="absolute inset-4 bg-gradient-to-br from-purple-500/30 to-purple-800/30 rounded-3xl -rotate-3"></div>
+           <div class="absolute inset-8 bg-gradient-to-br from-purple-400/40 to-purple-700/40 rounded-3xl rotate-2 flex items-center justify-center">
+            <div class="text-center">
+             <div class="text-6xl font-bold text-gradient mb-2">
+              Q
+             </div>
+             <div class="text-sm text-purple-300 font-medium">
+              Excellence in Digital
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Process Section -->
+    <section id="process" class="py-32 px-6 overflow-hidden">
+     <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-20 fade-in-section"><span class="text-purple-400 font-medium mb-4 block">How We Work</span>
+       <h2 class="text-4xl md:text-5xl font-bold mb-6">Our Process</h2>
+       <p class="text-gray-400 max-w-2xl mx-auto">A proven methodology that transforms ideas into successful digital products.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 relative">
+       <div class="process-step fade-in-section">
+        <div class="process-number">
+         1
+        </div>
+        <div class="hidden md:block process-line"></div>
+        <h4 class="font-semibold mb-2">Research</h4>
+        <p class="text-gray-400 text-sm">Deep dive into your market, audience, and competitors.</p>
+       </div>
+       <div class="process-step fade-in-section">
+        <div class="process-number">
+         2
+        </div>
+        <div class="hidden md:block process-line"></div>
+        <h4 class="font-semibold mb-2">Design</h4>
+        <p class="text-gray-400 text-sm">Crafting beautiful, user-centered experiences.</p>
+       </div>
+       <div class="process-step fade-in-section">
+        <div class="process-number">
+         3
+        </div>
+        <div class="hidden md:block process-line"></div>
+        <h4 class="font-semibold mb-2">Develop</h4>
+        <p class="text-gray-400 text-sm">Building with modern, scalable technologies.</p>
+       </div>
+       <div class="process-step fade-in-section">
+        <div class="process-number">
+         4
+        </div>
+        <div class="hidden md:block process-line"></div>
+        <h4 class="font-semibold mb-2">Optimize</h4>
+        <p class="text-gray-400 text-sm">Fine-tuning for peak performance.</p>
+       </div>
+       <div class="process-step fade-in-section">
+        <div class="process-number">
+         5
+        </div>
+        <h4 class="font-semibold mb-2">Growth</h4>
+        <p class="text-gray-400 text-sm">Continuous improvement and scaling.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Results Section -->
+    <section id="results" class="py-32 px-6">
+     <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade-in-section"><span class="text-purple-400 font-medium mb-4 block">Our Impact</span>
+       <h2 class="text-4xl md:text-5xl font-bold mb-6">Results That Speak</h2>
+       <p class="text-gray-400 max-w-2xl mx-auto">Real metrics from real projects. We deliver measurable outcomes.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+       <div class="stats-card fade-in-section">
+        <div class="stats-number counter" data-target="3">
+         0
+        </div>
+        <div class="text-purple-300 text-lg font-semibold mb-2">
+         x Faster
+        </div>
+        <p class="text-gray-400 text-sm">Average improvement in page load times</p>
+       </div>
+       <div class="stats-card fade-in-section">
+        <div class="stats-number">
+         <span class="counter" data-target="156">0</span>%
+        </div>
+        <div class="text-purple-300 text-lg font-semibold mb-2">
+         Higher Conversions
+        </div>
+        <p class="text-gray-400 text-sm">Average increase in conversion rates</p>
+       </div>
+       <div class="stats-card fade-in-section">
+        <div class="stats-number">
+         <span class="counter" data-target="285">0</span>%
+        </div>
+        <div class="text-purple-300 text-lg font-semibold mb-2">
+         SEO Growth
+        </div>
+        <p class="text-gray-400 text-sm">Average organic traffic improvement</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Testimonials Section -->
+    <section class="py-32 px-6">
+     <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade-in-section"><span class="text-purple-400 font-medium mb-4 block">Client Love</span>
+       <h2 class="text-4xl md:text-5xl font-bold mb-6">What They Say</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+       <div class="testimonial-card fade-in-section">
+        <div class="flex items-center gap-1 mb-4"><span class="text-purple-400">★</span> <span class="text-purple-400">★</span> <span class="text-purple-400">★</span> <span class="text-purple-400">★</span> <span class="text-purple-400">★</span>
+        </div>
+        <p class="text-gray-300 mb-6 leading-relaxed">"Qweb transformed our online presence completely. Our site is now lightning fast and conversions have tripled."</p>
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center font-bold">
+          S
+         </div>
+         <div>
+          <div class="font-semibold">
+           Sarah Mitchell
+          </div>
+          <div class="text-gray-400 text-sm">
+           CEO, TechStart
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="testimonial-card fade-in-section">
+        <div class="flex items-center gap-1 mb-4"><span class="text-purple-400">★</span> <span class="text-purple-400">★</span> <span class="text-purple-400">★</span> <span class="text-purple-400">★</span> <span class="text-purple-400">★</span>
+        </div>
+        <p class="text-gray-300 mb-6 leading-relaxed">"The best digital agency we've worked with. Their attention to detail and performance focus is unmatched."</p>
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center font-bold">
+          M
+         </div>
+         <div>
+          <div class="font-semibold">
+           Michael Chen
+          </div>
+          <div class="text-gray-400 text-sm">
+           Founder, GrowthLabs
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="testimonial-card fade-in-section">
+        <div class="flex items-center gap-1 mb-4"><span class="text-purple-400">★</span> <span class="text-purple-400">★</span> <span class="text-purple-400">★</span> <span class="text-purple-400">★</span> <span class="text-purple-400">★</span>
+        </div>
+        <p class="text-gray-300 mb-6 leading-relaxed">"From strategy to execution, Qweb delivered beyond our expectations. True partners in our digital journey."</p>
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center font-bold">
+          E
+         </div>
+         <div>
+          <div class="font-semibold">
+           Emma Rodriguez
+          </div>
+          <div class="text-gray-400 text-sm">
+           CMO, InnovateCo
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Final CTA Section -->
+    <section id="contact" class="py-32 px-6 relative overflow-hidden">
+     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-purple-900/20"></div>
+     <div class="max-w-4xl mx-auto text-center relative z-10">
+      <div class="fade-in-section">
+       <h2 id="finalCtaHeadline" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">Let's Build Something <span class="text-gradient">Powerful</span></h2>
+       <p class="text-gray-400 text-xl mb-12 max-w-2xl mx-auto">Ready to transform your digital presence? Let's create something extraordinary together.</p><button class="btn-glow text-lg px-12 py-5">Start Your Project →</button>
+      </div>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/5">
+     <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+       <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center">
+         <svg width="16" height="16" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+         </svg>
+        </div><span class="font-semibold">Qweb</span>
+       </div>
+       <div class="flex items-center gap-6 text-gray-400 text-sm"><a href="#" class="hover:text-white transition-colors">Privacy</a> <a href="#" class="hover:text-white transition-colors">Terms</a> <span>© 2024 Qweb. All rights reserved.</span>
+       </div>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      hero_headline: 'We Build <span class="text-gradient">Fast, Scalable</span> & <span class="text-gradient">Profitable</span> Digital Experiences',
+      hero_subheadline: 'Qweb is a premier digital studio specializing in high-performance websites, cutting-edge SEO strategies, and conversion-focused digital marketing that drives real business growth.',
+      cta_primary: 'Start Your Project',
+      cta_secondary: 'View Services',
+      services_title: 'Our Services',
+      why_title: 'Why Qweb?',
+      final_cta_headline: 'Let\'s Build Something <span class="text-gradient">Powerful</span>',
+      primary_color: '#7c3aed',
+      secondary_color: '#ffffff',
+      background_color: '#0a0a12',
+      text_color: '#ffffff',
+      accent_color: '#a78bfa',
+      font_family: 'Outfit',
+      font_size: 16
+    };
+    
+    let config = { ...defaultConfig };
+    
+    // Initialize particles
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        container.appendChild(particle);
+      }
+    }
+    
+    // Intersection Observer for fade-in animations
+    function setupIntersectionObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.fade-in-section').forEach(el => {
+        observer.observe(el);
+      });
+    }
+    
+    // Counter animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = parseInt(entry.target.getAttribute('data-target'));
+            const duration = 2000;
+            const start = 0;
+            const startTime = performance.now();
+            
+            function update(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const easeOut = 1 - Math.pow(1 - progress, 3);
+              const current = Math.round(start + (target - start) * easeOut);
+              entry.target.textContent = current;
+              
+              if (progress < 1) {
+                requestAnimationFrame(update);
+              }
+            }
+            
+            requestAnimationFrame(update);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      counters.forEach(counter => observer.observe(counter));
+    }
+    
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+    }
+    
+    // Render function
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      // Update text content
+      document.getElementById('heroHeadline').innerHTML = config.hero_headline || defaultConfig.hero_headline;
+      document.getElementById('heroSubheadline').textContent = config.hero_subheadline || defaultConfig.hero_subheadline;
+      document.getElementById('ctaPrimary').textContent = config.cta_primary || defaultConfig.cta_primary;
+      document.getElementById('ctaSecondary').textContent = config.cta_secondary || defaultConfig.cta_secondary;
+      document.getElementById('servicesTitle').textContent = config.services_title || defaultConfig.services_title;
+      document.getElementById('whyTitle').textContent = config.why_title || defaultConfig.why_title;
+      document.getElementById('finalCtaHeadline').innerHTML = config.final_cta_headline || defaultConfig.final_cta_headline;
+      
+      // Apply colors
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      
+      document.documentElement.style.setProperty('--primary-color', primaryColor);
+      document.body.style.color = textColor;
+      
+      // Apply font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+      
+      // Apply font size scaling
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.body.style.fontSize = `${baseSize}px`;
+    }
+    
+    // Map to capabilities
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (value) => {
+              cfg.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              cfg.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              cfg.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              cfg.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (value) => {
+            cfg.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => cfg.font_size || defaultConfig.font_size,
+          set: (value) => {
+            cfg.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+    
+    // Map to edit panel values
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['hero_headline', cfg.hero_headline || defaultConfig.hero_headline],
+        ['hero_subheadline', cfg.hero_subheadline || defaultConfig.hero_subheadline],
+        ['cta_primary', cfg.cta_primary || defaultConfig.cta_primary],
+        ['cta_secondary', cfg.cta_secondary || defaultConfig.cta_secondary],
+        ['services_title', cfg.services_title || defaultConfig.services_title],
+        ['why_title', cfg.why_title || defaultConfig.why_title],
+        ['final_cta_headline', cfg.final_cta_headline || defaultConfig.final_cta_headline]
+      ]);
+    }
+    
+    // Initialize
+    async function init() {
+      createParticles();
+      setupIntersectionObserver();
+      animateCounters();
+      
+      if (window.elementSdk) {
+        await window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues
+        });
+      } else {
+        onConfigChange(defaultConfig);
+      }
+    }
+    
+    init();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c93cba3b5c2d2f7',t:'MTc3MDMwOTA1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

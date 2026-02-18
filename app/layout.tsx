@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Header from "@/components/navabr";
-import Footer from "@/components/footer";
+import Header from "@/components/basic/navabr";
+import Footer from "@/components/basic/footer";
 import localFont from "next/font/local"
 import "./globals.css";
 
@@ -40,6 +40,12 @@ export default function RootLayout({
       <body
         className={`${myFont.className} font-sans antialiased`}
       >
+        <div className="blob-container">
+          <div className="blob blob-1"></div>
+          <div className="blob blob-2"></div>
+          <div className="blob blob-3"></div>
+          <div className="blob blob-4"></div>
+        </div>
         <Header />
         <main className="mt-20 text-black">
           {children}

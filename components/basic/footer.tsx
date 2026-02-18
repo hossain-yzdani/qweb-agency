@@ -2,7 +2,7 @@ const Footer = () => {
     return (
       <>
         <footer className="p-2 ">
-          <div className="bg-white rounded-md p-8 shadow-lg"></div>
+          <div className="glass rounded-md p-8 shadow-lg"></div>
         </footer>
       </>
     );

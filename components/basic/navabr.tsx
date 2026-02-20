@@ -89,17 +89,11 @@ const Header = () => {
           </button>
         </div>
 
-        {/* div for closing the navbar */}
-        <div
-          onClick={() => setIsOpen(!isOpen)}
-          className={`bg-transparent blur-3xl absolute w-full h-screen z-10 top-0 left-0 right-0 ${
-            isOpen ? "" : "hidden"
-          } `}
-        >
-        </div>
+
         
       </div>
       </nav>
+
       {/* mobile navbar */}
       <div
         className={`menu rounded-lg glass p-2 fixed top-19 mr-2 md:hidden z-15 ${
@@ -127,6 +121,15 @@ const Header = () => {
             ثبت نام
           </Link>
       </div>
+
+        {/* div for closing the navbar */}
+        <div
+          onClick={() => setIsOpen(!isOpen)}
+          className={`bg-transparent blur-3xl absolute w-full h-screen z-10 top-0 left-0 right-0 ${
+            isOpen ? "" : "hidden"
+          } `}
+        >
+        </div>
     </>
   );
 };

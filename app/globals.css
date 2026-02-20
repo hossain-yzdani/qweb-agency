@@ -78,8 +78,6 @@ body {
 }
 
 .blob-1 {
-  width: 600px;
-  height: 600px;
   background: radial-gradient(circle, #7c3aed 0%, #4c1d95 50%, transparent 70%);
   top: -200px;
   right: -100px;
@@ -87,8 +85,6 @@ body {
 }
 
 .blob-2 {
-  width: 500px;
-  height: 500px;
   background: radial-gradient(circle, #8b5cf6 0%, #5b21b6 50%, transparent 70%);
   bottom: -150px;
   left: -100px;
@@ -96,8 +92,6 @@ body {
 }
 
 .blob-3 {
-  width: 400px;
-  height: 400px;
   background: radial-gradient(circle, #a78bfa 0%, #6d28d9 50%, transparent 70%);
   top: 50%;
   left: 50%;
@@ -106,8 +100,6 @@ body {
 }
 
 .blob-4 {
-  width: 350px;
-  height: 350px;
   background: radial-gradient(circle, #7c3aed 0%, #4c1d95 50%, transparent 70%);
   top: 30%;
   right: 20%;

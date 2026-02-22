@@ -7,9 +7,9 @@ type TCards = {
 const ServicesPreview = () => {
   const Cards: TCards[] = [
     {
-      title: "SEO & Search Optimization",
+      title: "سئو و بهینه سازی موتور جست و جو",
       description:
-        "Dominate search rankings with data-driven SEO strategies that bring qualified traffic and increase visibility.",
+        "بهینه‌سازی تخصصی سایت بر اساس اصول فنی و محتوایی برای افزایش رتبه در گوگل و جذب ترافیک هدفمند.",
       icon: (
         <svg
           width="28"
@@ -25,9 +25,9 @@ const ServicesPreview = () => {
       ),
     },
     {
-      title: "Web Development",
+      title: "توسعه وبسایت",
       description:
-        "Modern, blazing-fast websites built with Next.js and cutting-edge technologies that convert visitors into customers.",
+        "طراحی و توسعه وبسایت‌های مدرن، سریع و سئو‌محور با تمرکز بر تجربه کاربری و افزایش نرخ تبدیل.",
       icon: (
         <svg
           width="28"
@@ -43,26 +43,9 @@ const ServicesPreview = () => {
       ),
     },
     {
-      title: "Performance Optimization",
+      title: "مدیریت شبکه‌های اجتماعی",
       description:
-        "Lightning-fast load times and Core Web Vitals optimization that improve rankings and user experience.",
-      icon: (
-        <svg
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#a78bfa"
-          strokeWidth="2"
-        >
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Digital Strategy",
-      description:
-        "Comprehensive digital roadmaps that align your online presence with business objectives for maximum ROI.",
+        "برنامه‌ریزی، استراتژی و مدیریت حرفه‌ای شبکه‌های اجتماعی برای رشد برند و افزایش تعامل مخاطبان.",
       icon: (
         <svg
           width="28"
@@ -79,9 +62,9 @@ const ServicesPreview = () => {
       ),
     },
     {
-      title: "Growth Marketing",
+      title: "گوگل ادز",
       description:
-        "Data-driven campaigns that scale your business through proven acquisition and retention strategies.",
+        "طراحی و مدیریت کمپین‌های تبلیغاتی گوگل برای جذب سریع مخاطب، کاهش هزینه کلیک و افزایش بازدهی فروش.",
       icon: (
         <svg
           width="28"
@@ -98,9 +81,9 @@ const ServicesPreview = () => {
       ),
     },
     {
-      title: "UI/UX Design",
+      title: "طراحی رابط کاربری ",
       description:
-        "Beautiful, intuitive interfaces that delight users and drive engagement through thoughtful design.",
+        "طراحی رابط کاربری حرفه‌ای و تجربه کاربری هدفمند برای افزایش تعامل کاربران و تبدیل بازدیدکننده به مشتری.",
       icon: (
         <svg
           width="28"
@@ -116,10 +99,27 @@ const ServicesPreview = () => {
         </svg>
       ),
     },
+    {
+      title: "تولید محتوا",
+      description:
+        "تولید محتوای هدفمند و ارزشمند شامل مقالات، کپشن‌ها و سناریوهای خلاقانه متناسب با استراتژی برند.",
+      icon: (
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#a78bfa"
+          strokeWidth="2"
+        >
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+        </svg>
+      ),
+    },
   ];
 
   return (
-    <section id="services" className="py-4 px-6 text-white">
+    <section dir="rtl" id="services" className="py-4 px-6 text-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-6 md:mb-16 fade-in-section">
           <span className="text-purple-400 text-lg mb-4 block">
@@ -139,7 +139,7 @@ const ServicesPreview = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Cards.map((card, index) => (
             <div
-              dir="ltr"
+              dir="rtl"
               key={index}
               className="fade-in-section glass p-8 rounded-2xl"
             >

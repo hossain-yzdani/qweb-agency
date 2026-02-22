@@ -22,7 +22,7 @@ const Header = () => {
   const links: NavLink[] = [
     { title: "خانه", url: "/" },
     { title: "خدمات", url: "/services" },
-    { title: "وبینار ها", url: "/webinars" },
+    { title: "محصولات", url: "/webinars" },
     { title: "دوره ها", url: "/courses" },
     { title: "درباره ما", url: "/about-us" },
     { title: "تماس ما", url: "/contact-us" },
@@ -125,7 +125,7 @@ const Header = () => {
         {/* div for closing the navbar */}
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className={`bg-transparent blur-3xl absolute w-full h-screen z-10 top-0 left-0 right-0 ${
+          className={`bg-transparent blur-3xl fixed w-full h-screen z-10 top-0 left-0 right-0 ${
             isOpen ? "" : "hidden"
           } `}
         >

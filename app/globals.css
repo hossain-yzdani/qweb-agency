@@ -33,6 +33,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(135deg, #0a0a12 0%, #12081f 50%, #0d0515 100%);
+  cursor: url(/logo/cursor.png), auto !important;
+}
+
+a, button {
+  cursor: url(/logo/pointer.png), pointer !important;
 }
 
 /* styles */
@@ -218,4 +223,74 @@ body {
   border-color: #7c3aed;
   background: rgba(124, 58, 237, 0.1);
   transform: translateY(-3px);
+}
+
+/* nprogress  */
+
+#nprogress .bar {
+  /* background: #29d; */
+  background: lab(30.6017% 56.7637 -64.4751) !important;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  /* box-shadow: 0 0 10px #29d, 0 0 5px #29d; */
+  box-shadow: 0 0 10px lab(30.6017% 56.7637 -64.4751), 0 0 5px lab(30.6017% 56.7637 -64.4751) !important;
+  opacity: 1.0;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+      -ms-transform: rotate(3deg) translate(0px, -4px);
+          transform: rotate(3deg) translate(0px, -4px);
+}
+
+#nprogress .spinner {
+  display: none !important;
+  position: fixed;
+  z-index: 1031;
+  top: 50% !important;
+  right: 50% !important;
+}
+
+#nprogress .spinner-icon {
+  width: 25px !important;
+  height: 25px !important;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  /* border-top-color: #29d; */
+  border-top-color: lab(30.6017% 56.7637 -64.4751) !important;
+  /* border-left-color: #29d; */
+  border-left-color: lab(30.6017% 56.7637 -64.4751) !important;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+          animation: nprogress-spinner 400ms linear infinite;
+}
+
+/* scroll bar  */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+::-webkit-scrollbar-thumb {
+  background: lab(33.24% 57.85 -65.81);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: lab(30.6017% 56.7637 -64.4751);
 }

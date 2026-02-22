@@ -3,6 +3,8 @@ import Header from "@/components/basic/navabr";
 import Footer from "@/components/basic/footer";
 import localFont from "next/font/local"
 import "./globals.css";
+import ProgressBar from "@/components/basic/progressBar";
+import SmoothScrool from "@/components/basic/smoothScroll";
 
 const myFont = localFont({
   src: [
@@ -37,18 +39,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body
-        className={`${myFont.className} font-sans antialiased`}
-      >
+      <body className={`${myFont.className} font-sans antialiased`}>
         <div className="blob-container">
           <div className="blob blob-1 w-50 h-50 lg:w-75 lg:h-75"></div>
           <div className="blob blob-2 w-37.5 h-37.5 lg:w-62.5 lg:h-62.5"></div>
           <div className="blob blob-3 w-45 h-45 lg:w-70 lg:h-70"></div>
           <div className="blob blob-4 w-40 h-40 lg:w-65 lg:h-65"></div>
         </div>
+        <ProgressBar />
         <Header />
         <main className="mt-20 text-black">
-          {children}
+          <SmoothScrool>{children}</SmoothScrool>
+          {/* {children} */}
         </main>
         <Footer />
       </body>

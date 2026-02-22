@@ -6,7 +6,7 @@ const Header = () => {
           className="fade-in-section visible lg:mt-4"
           style={{ animationDelay: "0.1s" }}
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-sm font-medium mb-8">
+          <span className="inline-block px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-sm font-medium mb-14">
             {" "}
             ✨ استودیو خدمات مارکتینگ و رشد برند {" "}
           </span>
@@ -24,7 +24,7 @@ const Header = () => {
         </h1>
         <p
           id="heroSubheadline"
-          className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 fade-in-section visible"
+          className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8 fade-in-section visible"
           style={{ animationDelay: "0.3s" }}
         >
          ارائه خدمات طراحی وبسایت، اپلیکیشن، هویت برند و تولید محتوا

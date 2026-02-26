@@ -41,10 +41,10 @@ export default function RootLayout({
     <html lang="fa" dir="rtl">
       <body className={`${myFont.className} font-sans antialiased`}>
         <div className="blob-container">
-          <div className="blob blob-1 w-50 h-50 lg:w-75 lg:h-75"></div>
-          <div className="blob blob-2 w-37.5 h-37.5 lg:w-62.5 lg:h-62.5"></div>
-          <div className="blob blob-3 w-45 h-45 lg:w-70 lg:h-70"></div>
-          <div className="blob blob-4 w-40 h-40 lg:w-65 lg:h-65"></div>
+          <div className="blob blob-1 w-50 h-50"></div>
+          <div className="blob blob-2 w-37.5 h-37.5"></div>
+          <div className="blob blob-3 w-45 h-45"></div>
+          <div className="blob blob-4 w-40 h-40"></div>
         </div>
         <ProgressBar />
         <Header />

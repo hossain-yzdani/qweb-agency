@@ -1,6 +1,8 @@
+import LazyVideo from "@/components/basic/lazyVideo";
+
 const TextBox = () => {
   return (
-    <div className="text-white text-center max-w-7xl mx-auto py-4 px-6">
+    <div className="text-white text-center max-w-7xl mx-auto py-10 px-6">
       <h2 className="text-3xl md:text-4xl font-bold mb-2 lg:mb-6">
         چرا <span className="text-gradient">کیو </span>{" "}
         <span className="text-gradient"> وب؟</span> 
@@ -8,6 +10,7 @@ const TextBox = () => {
       <p className="text-gray-400 max-w-2xl mx-auto mb-6">
         چرا باید کیو وب رو انتخاب کنی
       </p>
+      {/* <LazyVideo src="" poster="" radius="lg" /> */}
       <p className="text-white justify-start leading-8 text-justify">
         در دنیای رقابتی امروز، فقط داشتن وبسایت کافی نیست؛ باید دیده شوید،
         اعتماد بسازید و فروش را افزایش دهید. کیو وب با تمرکز بر طراحی سایت

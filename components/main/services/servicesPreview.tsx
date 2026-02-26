@@ -1,10 +1,60 @@
-type TCards = {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-};
+"use client";
 
-const ServicesPreview = () => {
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function ServicesPreview() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const progress = progressRef.current;
+    if (!container || !progress) return;
+
+    const nodes = gsap.utils.toArray<HTMLElement>(".timeline-node");
+    const boxes = gsap.utils.toArray<HTMLElement>(".timeline-box");
+
+    ScrollTrigger.create({
+      trigger: container,
+      start: "top 60%",
+      end: "bottom 30%",
+      scrub: 0.6,
+      onUpdate: (self) => {
+        const percent = self.progress;
+
+        // پر شدن خط
+        gsap.set(progress, { height: `${percent * 100}%` });
+
+        nodes.forEach((node, i) => {
+          const nodeTop = node.getBoundingClientRect().top + window.scrollY;
+          const containerTop =
+            container.getBoundingClientRect().top + window.scrollY;
+
+          const relative = nodeTop - containerTop;
+          const currentHeight = container.offsetHeight * percent;
+
+          if (currentHeight >= relative) {
+            node.classList.add("active");
+            boxes[i].classList.add("active");
+          } else {
+            node.classList.remove("active");
+            boxes[i].classList.remove("active");
+          }
+        });
+      },
+    });
+  }, []);
+
+  type TCards = {
+    title: string;
+    description: string;
+    icon: any;
+  };
+
   const Cards: TCards[] = [
     {
       title: "سئو و بهینه سازی موتور جست و جو",
@@ -12,8 +62,8 @@ const ServicesPreview = () => {
         "بهینه‌سازی تخصصی سایت بر اساس اصول فنی و محتوایی برای افزایش رتبه در گوگل و جذب ترافیک هدفمند.",
       icon: (
         <svg
-          width="28"
-          height="28"
+          width="15"
+          height="15"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#a78bfa"
@@ -30,8 +80,8 @@ const ServicesPreview = () => {
         "طراحی و توسعه وبسایت‌های مدرن، سریع و سئو‌محور با تمرکز بر تجربه کاربری و افزایش نرخ تبدیل.",
       icon: (
         <svg
-          width="28"
-          height="28"
+          width="15"
+          height="15"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#a78bfa"
@@ -43,32 +93,13 @@ const ServicesPreview = () => {
       ),
     },
     {
-      title: "مدیریت شبکه‌های اجتماعی",
-      description:
-        "برنامه‌ریزی، استراتژی و مدیریت حرفه‌ای شبکه‌های اجتماعی برای رشد برند و افزایش تعامل مخاطبان.",
-      icon: (
-        <svg
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#a78bfa"
-          strokeWidth="2"
-        >
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />{" "}
-          <polyline points="3.27 6.96 12 12.01 20.73 6.96" />{" "}
-          <line x1="12" y1="22.08" x2="12" y2="12" />
-        </svg>
-      ),
-    },
-    {
       title: "گوگل ادز",
       description:
         "طراحی و مدیریت کمپین‌های تبلیغاتی گوگل برای جذب سریع مخاطب، کاهش هزینه کلیک و افزایش بازدهی فروش.",
       icon: (
         <svg
-          width="28"
-          height="28"
+          width="20"
+          height="20"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#a78bfa"
@@ -80,82 +111,44 @@ const ServicesPreview = () => {
         </svg>
       ),
     },
-    {
-      title: "طراحی رابط کاربری ",
-      description:
-        "طراحی رابط کاربری حرفه‌ای و تجربه کاربری هدفمند برای افزایش تعامل کاربران و تبدیل بازدیدکننده به مشتری.",
-      icon: (
-        <svg
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#a78bfa"
-          strokeWidth="2"
-        >
-          <path d="M12 19l7-7 3 3-7 7-3-3z" />{" "}
-          <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />{" "}
-          <path d="M2 2l7.586 7.586" /> <circle cx="11" cy="11" r="2" />
-        </svg>
-      ),
-    },
-    {
-      title: "تولید محتوا",
-      description:
-        "تولید محتوای هدفمند و ارزشمند شامل مقالات، کپشن‌ها و سناریوهای خلاقانه متناسب با استراتژی برند.",
-      icon: (
-        <svg
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#a78bfa"
-          strokeWidth="2"
-        >
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-        </svg>
-      ),
-    },
   ];
 
   return (
-    <section dir="rtl" id="services" className="py-4 px-6 text-white mb-14">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-6 md:mb-16 fade-in-section">
-          <span className="text-purple-400 text-lg mb-4 block">
-            ما چیکار می کنیم؟
-          </span>
-          <h2
-            id="servicesTitle"
-            className="text-2xl md:text-4xl font-bold mb-2 lg:mb-6"
-          >
-            خدمات ما
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            راهکارهای جامع دیجیتال که برای ارتقای برند شما و تسریع رشد طراحی
-            شده‌اند.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Cards.map((card, index) => (
-            <div
-              dir="rtl"
-              key={index}
-              className="fade-in-section glass p-8 rounded-2xl"
-            >
-              <div className="w-14 h-14 flex justify-center items-center rounded-xl shadowTheme mb-4">
-                {card.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-3">{card.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                {card.description}
-              </p>
-            </div>
-          ))}
-        </div>
+    <section ref={containerRef} className="relative max-w-5xl mx-auto py-14">
+      {/* خط اصلی */}
+      <div className="absolute right-8 top-0 h-full w-[4px] bg-gray-700 rounded-full">
+        <div
+          ref={progressRef}
+          className="w-full bg-purple-500 rounded-full h-0"
+        />
       </div>
+
+      <div className="flex flex-col gap-25">
+        {Cards.map((item, i) => (
+          <div key={i} className="relative flex items-center">
+            {/* باکس سمت چپ */}
+            <div className="timeline-box w-8/10 md:w-2/3 lg:w-1/2 p-6 rounded-xl glass transition-all duration-500 text-white mr-10">
+              <h3 className="font-bold mb-2">{item.title}</h3>
+              <p className="text-sm opacity-70">{item.description}</p>
+            </div>
+
+            {/* نود روی خط */}
+            <div className="timeline-node absolute right-[13px] p-3 text-[5px] rounded-full glass transition-all duration-300" >
+              {item.icon}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <style jsx>{`
+        .timeline-node.active {
+          transform: scale(1.3);
+        }
+
+        .timeline-box.active {
+          transform: translateX(-10px);
+        }
+      `}</style>
     </section>
   );
-};
-
-export default ServicesPreview;
+}

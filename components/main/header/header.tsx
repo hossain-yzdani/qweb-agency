@@ -6,14 +6,14 @@ const Header = () => {
           className="fade-in-section visible lg:mt-4"
           style={{ animationDelay: "0.1s" }}
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-sm font-medium mb-14">
+          <span className="inline-block px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-sm font-medium mb-22">
             {" "}
             ✨ استودیو خدمات مارکتینگ و رشد برند {" "}
           </span>
         </div>
         <h1
           id="heroHeadline"
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 fade-in-section visible"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 fade-in-section visible"
           style={{ animationDelay: "0.2s" }}
         >
           {" "}

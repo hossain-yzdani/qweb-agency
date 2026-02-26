@@ -5,7 +5,7 @@ const TextBox = () => {
         چرا <span className="text-gradient">کیو </span>{" "}
         <span className="text-gradient"> وب؟</span> 
       </h2>
-      <p className="text-gray-400 max-w-2xl mx-auto mb-2">
+      <p className="text-gray-400 max-w-2xl mx-auto mb-6">
         چرا باید کیو وب رو انتخاب کنی
       </p>
       <p className="text-white justify-start leading-8 text-justify">

@@ -119,7 +119,7 @@ const ServicesPreview = () => {
   ];
 
   return (
-    <section dir="rtl" id="services" className="py-4 px-6 text-white">
+    <section dir="rtl" id="services" className="py-4 px-6 text-white mb-14">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-6 md:mb-16 fade-in-section">
           <span className="text-purple-400 text-lg mb-4 block">

@@ -37,7 +37,7 @@ const Header = () => {
 
         {/* logo & title */}
         <div
-          className="flex items-center flex-1 z-15">
+          className="flex flex-row-reverse md:flex-row items-center flex-1 z-15">
           <Image
             src="/logo/qweb-logo.png"
             alt="Picture of the author"

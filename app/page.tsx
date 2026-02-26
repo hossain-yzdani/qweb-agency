@@ -14,6 +14,7 @@ export default function Home() {
     <div className="px-4 text-justify">
       <Header />
       <ServicesPreview />
+      
       <TextBox />
     </div>
   );

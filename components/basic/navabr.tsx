@@ -34,7 +34,7 @@ const Header = () => {
       <nav className="fixed px-2 py-1 md:py-2 top-2 left-2 right-2 z-50 glass rounded-xl">
         <div className="flex justify-between items-center flex-row-reverse md:flex-row">
           {/* logo & title */}
-          <div className="flex justify-end items-center flex-1 z-15">
+          <div className="flex justify-end md:justify-start items-center flex-1 z-15">
             <Image
               src="/logo/qweb-logo.png"
               alt="Picture of the author"
@@ -76,7 +76,7 @@ const Header = () => {
           {/* mobile button */}
           <div className="block md:hidden  z-15">
             <button
-              className=" justify-center pl-1 text-white items-center rounded cursor-pointer text-2xl"
+              className=" justify-center pr-1 text-white items-center rounded cursor-pointer text-2xl"
               type="button"
               onClick={() => setIsOpen(!isOpen)}
             >

@@ -297,3 +297,25 @@ a, button {
 
 /* scroller  */
 
+/* swiper  */
+.swiper-pagination .swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 1 !important;
+  transition: 0.2s !important;
+}
+
+.swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #6e11b0 !important;
+  /* box-shadow: 0 0 12px rgba(255, 255, 255, 1) !important; */
+  transform: scale(1.2);
+}
+
+.swiper-pagination-bullet-active {
+  width: 15px !important;
+  border-radius: 15px !important;
+  transition: 0.2s !important;
+}

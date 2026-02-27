@@ -1,16 +1,15 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import { useRef, useState } from "react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import ClientsPreviewItem from "./clientsPreviewItem";
 
-
-const ClientsPreview = () => {
+const Videos = () => {
   const videoRefs = useRef<HTMLVideoElement[]>([]);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const handleSlideChange = (swiper: any) => {
     if (window.innerWidth < 768) {
@@ -34,14 +33,8 @@ const ClientsPreview = () => {
 
       <Swiper
         className="px-4"
-        modules={[Pagination, Autoplay]}
+        modules={[Pagination]}
         spaceBetween={20}
-        loop={true}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
         slidesPerView={1}
         pagination={{ clickable: true }}
         onSlideChange={handleSlideChange}
@@ -55,7 +48,9 @@ const ClientsPreview = () => {
             key={idx}
             className="glass rounded-xl flex flex-row items-center justify-center p-1 mb-10"
           >
-            <ClientsPreviewItem title="کیو وب" imageSrc="/logo/qweb-logo-1.png" imageAlt="testing" description="توسعه وبسایت و بهبود نتایج در موتور های جست و جو" />
+            <div>
+              <img className="w-30" src="/logo/qweb-logo-1.png" alt="" />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -63,4 +58,4 @@ const ClientsPreview = () => {
   );
 };
 
-export default ClientsPreview;
+export default Videos;

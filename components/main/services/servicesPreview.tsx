@@ -114,26 +114,23 @@ export default function ServicesPreview() {
   ];
 
   return (
-    <section ref={containerRef} className="relative max-w-5xl mx-auto py-14">
-      {/* خط اصلی */}
-      <div className="absolute right-8 top-0 h-full w-[4px] bg-gray-700 rounded-full">
+    <section ref={containerRef} className="relative max-w-7xl mx-auto py-14">
+      <div className="absolute right-8 top-0 h-full w-1 bg-gray-700 rounded-full">
         <div
           ref={progressRef}
           className="w-full bg-purple-500 rounded-full h-0"
         />
       </div>
 
-      <div className="flex flex-col gap-25">
+      <div className="flex flex-col gap-20">
         {Cards.map((item, i) => (
           <div key={i} className="relative flex items-center">
-            {/* باکس سمت چپ */}
             <div className="timeline-box w-8/10 md:w-2/3 lg:w-1/2 p-6 rounded-xl glass transition-all duration-500 text-white mr-10">
               <h3 className="font-bold mb-2">{item.title}</h3>
               <p className="text-sm opacity-70">{item.description}</p>
             </div>
 
-            {/* نود روی خط */}
-            <div className="timeline-node absolute right-[13px] p-3 text-[5px] rounded-full glass transition-all duration-300" >
+            <div className="timeline-node absolute right-3.25 p-3 text-[5px] rounded-full glass transition-all duration-300" >
               {item.icon}
             </div>
           </div>

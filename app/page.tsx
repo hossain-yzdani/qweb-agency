@@ -1,3 +1,4 @@
+import ClientsPreview from "@/components/main/clients/clientsPreview";
 import Header from "@/components/main/header/header";
 import ServicesPreview from "@/components/main/services/servicesPreview";
 import TextBox from "@/components/main/textbox/textBox";
@@ -16,6 +17,7 @@ export default function Home() {
       <ServicesPreview />
       
       <TextBox />
+      <ClientsPreview />
     </div>
   );
 }

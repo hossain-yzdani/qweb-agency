@@ -76,7 +76,7 @@ const Header = () => {
           {/* mobile button */}
           <div className="block md:hidden  z-15">
             <button
-              className=" justify-center pr-1 text-white items-center rounded cursor-pointer text-2xl"
+              className=" justify-center pr-2 text-white items-center rounded cursor-pointer text-2xl"
               type="button"
               onClick={() => setIsOpen(!isOpen)}
             >
